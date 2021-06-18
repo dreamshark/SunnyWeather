@@ -14,32 +14,32 @@ object Repository {
 
     fun searchPlaces(query: String) = fire(Dispatchers.IO) {
         val placeResponse = SunnyWeatherNetwork.searchPlaces(query)
-        if (placeResponse.status == "ok") {
-            val places = placeResponse.places
+        if (placeResponse.code == "200") {
+            val places = placeResponse.location
             Result.success(places)
         } else {
-            Result.failure(RuntimeException("response status is ${placeResponse.status}"))
+            Result.failure(RuntimeException("response code is ${placeResponse.code}"))
         }
     }
 
-    fun refreshWeather(lng: String, lat: String, placeName: String) = fire(Dispatchers.IO) {
+    fun refreshWeather(location: String, placeName: String) = fire(Dispatchers.IO) {
         coroutineScope {
             val deferredRealtime = async {
-                SunnyWeatherNetwork.getRealtimeWeather(lng, lat)
+                SunnyWeatherNetwork.getRealtimeWeather(location)
             }
             val deferredDaily = async {
-                SunnyWeatherNetwork.getDailyWeather(lng, lat)
+                SunnyWeatherNetwork.getDailyWeather(location)
             }
             val realtimeResponse = deferredRealtime.await()
             val dailyResponse = deferredDaily.await()
-            if (realtimeResponse.status == "ok" && dailyResponse.status == "ok") {
-                val weather = Weather(realtimeResponse.result.realtime, dailyResponse.result.daily)
+            if (realtimeResponse.code == "200" && dailyResponse.code == "200") {
+                val weather = Weather(realtimeResponse.now, dailyResponse.daily)
                 Result.success(weather)
             } else {
                 Result.failure(
                     RuntimeException(
-                        "realtime response status is ${realtimeResponse.status}" +
-                                "daily response status is ${dailyResponse.status}"
+                        "realtime response code is ${realtimeResponse.code}" +
+                                "daily response code is ${dailyResponse.code}"
                     )
                 )
             }

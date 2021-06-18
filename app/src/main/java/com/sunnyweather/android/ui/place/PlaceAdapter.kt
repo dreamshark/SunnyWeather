@@ -1,5 +1,6 @@
 package com.sunnyweather.android.ui.place
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -27,14 +28,12 @@ class PlaceAdapter(private val fragment: PlaceFragment, private val placeList: L
             val activity = fragment.activity
             if (activity is WeatherActivity) {
                 activity.drawerLayout.closeDrawers()
-                activity.viewModel.locationLng = place.location.lng
-                activity.viewModel.locationLat = place.location.lat
+                activity.viewModel.id = place.id
                 activity.viewModel.placeName = place.name
                 activity.refreshWeather()
             } else {
                 val intent = Intent(parent.context, WeatherActivity::class.java).apply {
-                    putExtra("location_lng", place.location.lng)
-                    putExtra("location_lat", place.location.lat)
+                    putExtra("id", place.id)
                     putExtra("place_name", place.name)
                 }
                 fragment.startActivity(intent)
@@ -45,10 +44,11 @@ class PlaceAdapter(private val fragment: PlaceFragment, private val placeList: L
         return holder
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val place = placeList[position]
         holder.placeName.text = place.name
-        holder.placeAddress.text = place.address
+        holder.placeAddress.text = place.country+place.adm1
     }
 
     override fun getItemCount() = placeList.size

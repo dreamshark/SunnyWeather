@@ -29,6 +29,14 @@
             android:hint="输入地址"
             android:background="@drawable/search_bg"/>
     </FrameLayout>
+    <Button
+        android:id="@+id/navBtn2"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:text="修改背景图片"
+        android:translationX="285dp"
+        android:translationY="600dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

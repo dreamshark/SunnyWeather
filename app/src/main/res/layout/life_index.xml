@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
-            android:text="生活指数"
+            android:text="天气状况"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="20sp"/>
 
@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_coldrisk" />
+                    android:src="@drawable/ic_coldrisk1" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="感冒" />
+                        android:text="相对湿度" />
 
                     <TextView
                         android:id="@+id/coldRiskText"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_dressing" />
+                    android:src="@drawable/ic_dressing1" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="穿衣" />
+                        android:text="大气压强" />
 
                     <TextView
                         android:id="@+id/dressingText"
@@ -134,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="实时紫外线" />
+                        android:text="紫外线强度指数" />
 
                     <TextView
                         android:id="@+id/ultravioletText"
@@ -158,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_carwashing" />
+                    android:src="@drawable/ic_carwashing1" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="洗车" />
+                        android:text="云量" />
 
                     <TextView
                         android:id="@+id/carWashingText"
